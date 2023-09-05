@@ -1,3 +1,4 @@
+// Danilo De Sena Santos
 
 #include <iostream>
 using namespace std;
@@ -145,12 +146,50 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	NO* pos = NULL;
+	int num;
+	cout << "Digite um numero para excluir: ";
+	cin >> num;
+	pos = posicaoElemento(num);
+	if (pos == NULL) {
+		cout << "Elemento nao encontrado" << endl;
+	}
+	else {
+		NO* aux = primeiro;
+		NO* excluirElemento = pos;
+		if (aux == pos) {
+			aux = aux->prox;
+		}
+		else {
+			while (aux != NULL) {
+				NO* ante = aux;
+				
+				if (ante == excluirElemento) {
+					ante = excluirElemento->prox;
+					free(aux);
+					break;
+				}
+				aux = aux->prox;
+			}
+		}
+		/*free(excluirElemento);
+		cout << "Elemento encontrado" << endl;*/
+	}
 }
 
 void buscarElemento()
 {
-	
+	NO* pos = NULL;
+	int num;
+	cout << "Digite um numero para pesquisar: ";
+	cin >> num;
+	pos = posicaoElemento(num);
+	if (pos == NULL) {
+		cout << "Elemento nao encontrado" << endl;
+	}
+	else {
+		cout << "Elemento encontrado" << endl;
+	}
 }
 
 
