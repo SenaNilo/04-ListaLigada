@@ -155,25 +155,27 @@ void excluirElemento()
 		cout << "Elemento nao encontrado" << endl;
 	}
 	else {
-		NO* aux = primeiro;
-		NO* excluirElemento = pos;
-		if (aux == pos) {
-			aux = aux->prox;
+		if (pos == primeiro) {
+			primeiro = primeiro->prox;
 		}
 		else {
+			NO* aux = primeiro;
+			NO* ante = NULL;
 			while (aux != NULL) {
-				NO* ante = aux;
-				
-				if (ante == excluirElemento) {
-					ante = excluirElemento->prox;
-					free(aux);
+				if (pos->valor == aux->valor) {
+					if (aux->prox == NULL) {
+						ante->prox = NULL;
+					}
+					else {
+						ante->prox = aux->prox;
+					}
+					free(pos);
 					break;
 				}
+				ante = aux;
 				aux = aux->prox;
 			}
 		}
-		/*free(excluirElemento);
-		cout << "Elemento encontrado" << endl;*/
 	}
 }
 
@@ -191,7 +193,6 @@ void buscarElemento()
 		cout << "Elemento encontrado" << endl;
 	}
 }
-
 
 
 // retorna um ponteiro para o elemento buscado
