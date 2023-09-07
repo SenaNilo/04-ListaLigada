@@ -160,20 +160,23 @@ void excluirElemento()
 		}
 		else {
 			NO* aux = primeiro;
-			NO* ante = NULL;
+			NO* ante = aux;
 			while (aux != NULL) {
 				if (pos->valor == aux->valor) {
-					if (aux->prox == NULL) {
-						ante->prox = NULL;
-					}
-					else {
+					if (aux == primeiro->prox) {
+						primeiro->prox = aux->prox;
+						free(pos);
+						break;
+					}else {
 						ante->prox = aux->prox;
+						free(pos);
+						break;
 					}
-					free(pos);
-					break;
 				}
-				ante = aux;
-				aux = aux->prox;
+				else {
+					ante = aux;
+					aux = aux->prox;
+				}
 			}
 		}
 	}
