@@ -136,11 +136,37 @@ void inserirElemento()
 	else
 	{
 		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
+		if (novo->valor == primeiro->valor) {
+			cout << "Esse numero ja existe!" << endl;
 		}
-		aux->prox = novo;
+		else {
+			NO* aux = primeiro;
+			bool numExist = false;
+			while (aux != NULL) {
+				if (aux->valor == novo->valor) {
+					cout << "Esse numero ja existe!" << endl;
+					numExist = true;
+					break;
+				}
+				else {
+					aux = aux->prox;
+				}
+			}
+
+			if (!numExist) {
+				aux = primeiro;
+				while (aux->prox != NULL) {
+					if (aux->valor == novo->valor) {
+						cout << "Esse numero ja existe!" << endl;
+						break;
+					}
+					else {
+						aux = aux->prox;
+					}
+				}
+				aux->prox = novo;
+			}
+		}
 	}
 }
 
